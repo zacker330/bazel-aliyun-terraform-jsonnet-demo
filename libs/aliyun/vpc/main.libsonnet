@@ -1,0 +1,5 @@
+{
+    vpc(name)::{
+        name: name
+    }
+}

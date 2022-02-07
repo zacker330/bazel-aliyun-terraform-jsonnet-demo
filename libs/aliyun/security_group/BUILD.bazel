@@ -1,0 +1,12 @@
+load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_library", "jsonnet_to_json")
+package(default_visibility = ["//visibility:public"])
+
+
+jsonnet_library(
+    name = "security_group",
+    srcs = [
+        "main.libsonnet"
+    ]
+)
+
+
