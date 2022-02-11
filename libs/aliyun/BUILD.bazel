@@ -3,8 +3,16 @@ load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_library", "jsonnet
 package(default_visibility = ["//visibility:public"])
 
 jsonnet_library(
-    name = "security_group",
+    name = "aliyun",
     srcs = [
         "main.libsonnet",
+    ],
+    imports = [
+        "secrity_group/main.libsonnet",
+        "vpc/main.libsonnet",
+    ],
+    deps = [
+        "//libs/aliyun/security_group",
+        "//libs/aliyun/vpc",
     ],
 )

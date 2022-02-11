@@ -1,7 +1,6 @@
 load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_library", "jsonnet_to_json")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 
-
 filegroup(
     name = "garnish_txt",
     srcs = [
@@ -11,18 +10,14 @@ filegroup(
 
 jsonnet_to_json(
     name = "main",
-    src = "main.jsonnet",
-    multiple_outputs = True,
-    deps = [
-    "//libs/aliyun/security_group",
-    "//libs/aliyun/vpc",
-    ],
-    ext_str_files = [":garnish_txt"],
+    src = "infra.jsonnet",
     outs = [
         "infra.tf.json",
-        "build.json",
-        "rollout.json"
     ],
-    imports = ["//libs/security_group"],
+    ext_str_files = [":garnish_txt"],
+    imports = ["libs/aliyun/main.libsonnet"],
+    multiple_outputs = True,
+    deps = [
+        "//libs/aliyun",
+    ],
 )
-
